@@ -2,21 +2,22 @@ using System;
 
 class Timer
 {
-    private int time;
+    private int timer;
 
-    public Timer(int time){
-        this.time = time;
+    public Timer(int timer){
+        this.timer = timer;
     }
 
-    public void StartTimer(int seconds){
+    public bool StartTimer(int seconds)
+    {
         while (seconds != 0)
         {   
-            Console.WriteLine(seconds);
             Thread.Sleep(1000);
             seconds--;
-            Console.Write("\b \b");
         }
-        
-        Console.WriteLine("Complete! Good job!");
+        // timer done
+        return true;
     }
+
+
 }
