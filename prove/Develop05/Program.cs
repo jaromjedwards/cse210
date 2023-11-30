@@ -4,10 +4,10 @@ using System.Collections.Generic;
 
 class Program
 {
+    static List<Goal> goals = new List<Goal>();
     static void Main(string[] args)
     {
         string userChoice = "0";
-        List<Goal> goals = new List<Goal>();
         string fileName = "goals.txt";
 
         LoadGoals();
@@ -96,13 +96,12 @@ class Program
             {
                 int index = 0;
 
-                using (StreamWriter outputFile = new StreamWriter(fileName))
+                using (StreamWriter outputFile = new StreamWriter(fileName, true))
                 {
                     foreach (Goal g in goals)
                     {
                         string goal = g.GetGoal();
-                        outputFile.WriteLine($"[{index}] {goal}");
-                        index++;
+                        outputFile.WriteLine($"{goal}");
                     }
                 }
             }
@@ -119,10 +118,33 @@ class Program
         {
             string fileName = "goals.txt";
             string[] lines = File.ReadAllLines(fileName);
-            foreach (string line in lines)
-            {
-                Console.WriteLine(line);
+
+            foreach (string line in lines){
+                string[] elements = line.Split(":");
+                
+                string a = elements[0];
+                string b = elements[1];
+
+                if (a == "Simple Goal"){
+                    SimpleGoal simpleGoal1 = new SimpleGoal(b);
+                    simpleGoal1.SetGoalType("Checklist Goal");
+
+                    goals.Add(simpleGoal1);
+                    
+                }
+
+                // line index 0 = typepf goal
+                // line index 1 = the rest
+
             }
+
+        
+            // string fileName = "goals.txt";
+            // string[] lines = File.ReadAllLines(fileName);
+            // foreach (string line in lines)
+            // {
+            //     Console.WriteLine(line);
+            // }
         }
     }
 }

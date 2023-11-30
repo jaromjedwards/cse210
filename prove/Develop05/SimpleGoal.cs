@@ -6,4 +6,14 @@ public class SimpleGoal : Goal{
         return $"{goalType},{goalName},({goalDescription}),{goalPoints}";
     }
 
+    public SimpleGoal(string b){
+
+        string[] peices = b.Split(",");
+
+        goalName = peices[0];
+        goalDescription = peices[1];
+        goalPoints = Convert.ToInt16(peices[2]);
+        
+    }
+
 }
