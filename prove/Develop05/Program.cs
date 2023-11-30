@@ -92,6 +92,16 @@ class Program
                     goals.Add(checklistGoal1);
                 }
             }
+
+            else if (userChoice == "2")
+{
+                Console.WriteLine("List of Goals:");
+                foreach (Goal g in goals)
+                {
+                    Console.WriteLine(g.GetGoal());
+                }
+            }
+
             else if (userChoice == "3")
             {
                 int index = 0;
@@ -132,19 +142,10 @@ class Program
                     goals.Add(simpleGoal1);
                     
                 }
-
-                // line index 0 = typepf goal
-                // line index 1 = the rest
-
             }
 
         
-            // string fileName = "goals.txt";
-            // string[] lines = File.ReadAllLines(fileName);
-            // foreach (string line in lines)
-            // {
-            //     Console.WriteLine(line);
-            // }
+            
         }
     }
 }

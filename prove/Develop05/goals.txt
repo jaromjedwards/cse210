@@ -1,2 +1,5 @@
 [0] Simple Goal:,fr,(fr),5
 [0] Simple Goal:,de,(de),3
+Simple Goal:,fr,(gt),7
+Checklist Goal,,(fr),0
+Simple Goal:,say hello,(no thank you),0
