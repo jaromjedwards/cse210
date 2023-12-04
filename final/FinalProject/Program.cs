@@ -1,5 +1,11 @@
 using System;
 
+// Abstraction: Abstract classes such as Person and MovieSurveys.
+// Encaptulation: Person encaptulates firstName, lastName, gender and age. 
+// Inheritance: PixarMovieSurvey, DisneyMovieSurvey, and DreamworksMovieSurvey inherit functionality/properties from MovieSurvey.
+// Polymorphism: MovieSurvey holds favorite and least favorite, Pixar/Disney/DreamworksSurvey override
+
+
 class Program
 {
     static void Main(string[] args)
@@ -36,17 +42,14 @@ class Program
         Console.WriteLine($"Survey has started. First, let's start with some general questions:");
 
         // Get general Movie Survey responses
-
         Console.WriteLine("Where do you mainly watch movies?");
         string locationWatched = Console.ReadLine();
-
         Console.WriteLine("How many hours a week do you watch movies? (Do not include hours watched TV shows, YouTube, Media content etc");
         string hInput = Console.ReadLine();
-
         Console.WriteLine("What is your prefered genre of movies?");
         string genrePreference = Console.ReadLine();
 
-
+        // ask specific Pixar/Disney/Dreamworks questions
         if (userChoice == "1"){
             Console.WriteLine($"Great! Now onto the Pixar Movie Specific questions");
 
@@ -131,8 +134,6 @@ class Program
             string leastFavorite = Console.ReadLine();
 
         }
-
-        
 
     }
 }
