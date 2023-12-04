@@ -35,38 +35,104 @@ class Program
         string userChoice = Console.ReadLine();
         Console.WriteLine($"Survey has started. First, let's start with some general questions:");
 
-        // get general Movie Survey responses
-        MovieSurvey movieSurvey = new MovieSurvey();
+        // Get general Movie Survey responses
+
         Console.WriteLine("Where do you mainly watch movies?");
         string locationWatched = Console.ReadLine();
-        movieSurvey.SetLocationWatched(locationWatched);
 
         Console.WriteLine("How many hours a week do you watch movies? (Do not include hours watched TV shows, YouTube, Media content etc");
         string hInput = Console.ReadLine();
-        if (int.TryParse(hInput, out int weeklyHoursWatched))
-        {
-            movieSurvey.SetWeeklyHoursWatched(weeklyHoursWatched);
-        }
-        else
-        {
-            Console.WriteLine("Invalid age input. Please enter a valid integer.");
-        }
 
         Console.WriteLine("What is your prefered genre of movies?");
         string genrePreference = Console.ReadLine();
-        movieSurvey.SetGenrePreference(genrePreference);
 
 
         if (userChoice == "1"){
             Console.WriteLine($"Great! Now onto the Pixar Movie Specific questions");
 
+            // Set General Movie Responses
             PixarMovieSurvey pixar = new PixarMovieSurvey();
-            IReadOnlyList<string> pixarMovies = pixar.GetPixarMovies();
-            foreach (string movie in pixarMovies){
-                Console.WriteLine(movie);
+            pixar.SetLocationWatched(locationWatched);
+            pixar.SetGenrePreference(genrePreference);
+            if (int.TryParse(hInput, out int weeklyHoursWatched))
+            {
+                pixar.SetWeeklyHoursWatched(weeklyHoursWatched);
+            }
+            else
+            {
+                Console.WriteLine("Invalid age input. Please enter a valid integer.");
             }
 
+            // Get Pixar movie list
+            IReadOnlyList<string> pixarMovies = pixar.GetPixarMovies();
+            Console.WriteLine("Pixar Movies: " + string.Join(", ", pixarMovies));
+
+            // Get Pixar Movie Responses
+            Console.WriteLine($"What is your favorite Pixar movie?");
+            string favorite = Console.ReadLine();
+
+            Console.WriteLine($"What is your least favorite Pixar movie?");
+            string leastFavorite = Console.ReadLine();
+
         }
+        if (userChoice == "2"){
+            Console.WriteLine($"Great! Now onto the Disney Movie Specific questions");
+
+            // Set General Movie Responses
+            DisneyMovieSurvey disney = new DisneyMovieSurvey();
+            disney.SetLocationWatched(locationWatched);
+            disney.SetGenrePreference(genrePreference);
+            if (int.TryParse(hInput, out int weeklyHoursWatched))
+            {
+                disney.SetWeeklyHoursWatched(weeklyHoursWatched);
+            }
+            else
+            {
+                Console.WriteLine("Invalid age input. Please enter a valid integer.");
+            }
+
+            // Get Disney movie list
+            IReadOnlyList<string> disneyMovies = disney.GetDisneyMovies();
+            Console.WriteLine("Disney Movies: " + string.Join(", ", disneyMovies));
+
+            // Get Disney Movie Responses
+            Console.WriteLine($"What is your favorite Disney movie?");
+            string favorite = Console.ReadLine();
+
+            Console.WriteLine($"What is your least favorite Disney movie?");
+            string leastFavorite = Console.ReadLine();
+
+        }
+        if (userChoice == "3"){
+            Console.WriteLine($"Great! Now onto the Dreamworks Movie Specific questions");
+
+            // Set General Movie Responses
+            DreamworksMovieSurvey dreamworks = new DreamworksMovieSurvey();
+            dreamworks.SetLocationWatched(locationWatched);
+            dreamworks.SetGenrePreference(genrePreference);
+            if (int.TryParse(hInput, out int weeklyHoursWatched))
+            {
+                dreamworks.SetWeeklyHoursWatched(weeklyHoursWatched);
+            }
+            else
+            {
+                Console.WriteLine("Invalid age input. Please enter a valid integer.");
+            }
+
+            // Get Dreamworks movie list
+            IReadOnlyList<string> dreamworksMovies = dreamworks.GetDreamworksMovies();
+            Console.WriteLine("Dreamworks Movies: " + string.Join(", ", dreamworksMovies));
+
+            // Get Dreamworks Movie Responses
+            Console.WriteLine($"What is your favorite Dreamworks movie?");
+            string favorite = Console.ReadLine();
+
+            Console.WriteLine($"What is your least favorite Dreamworks movie?");
+            string leastFavorite = Console.ReadLine();
+
+        }
+
+        
 
     }
 }

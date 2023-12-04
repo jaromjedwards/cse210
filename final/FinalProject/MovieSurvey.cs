@@ -1,12 +1,12 @@
 using System;
 
-public class MovieSurvey{
+public abstract class MovieSurvey{
 
     private string LocationWatched;
     private int weeklyHoursWatched;
     private string genrePreference;
-    private string favorite;
-    private string leastFavorite;
+    protected string favorite;
+    protected string leastFavorite;
 
     public string GetLocationWatched(){
         return LocationWatched;
@@ -29,24 +29,17 @@ public class MovieSurvey{
     public void SetGenrePreference(string genrePreference){
         this.genrePreference = genrePreference;
     }
-    public string GetFavorite()
-    {
-        return favorite;
-    }
 
     public void SetFavorite(string favorite)
     {
         this.favorite = favorite;
     }
 
-    public string GetLeastFavorite()
-    {
-        return leastFavorite;
-    }
-
     public void SetLeastFavorite(string leastFavorite)
     {
         this.leastFavorite = leastFavorite;
     }
+    public abstract string GetFavorite();
+    public abstract string GetLeastFavorite();
 
 }

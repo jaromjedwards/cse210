@@ -40,5 +40,22 @@ public class PixarMovieSurvey : MovieSurvey{
         return new List<String>(pixarMovies);
     }
     
+    public override string GetFavorite(){
+        return $"{favorite}";
+    }
+    public override string GetLeastFavorite()
+    {
+        return $"{leastFavorite}";
+    }
 
+    public void AddPixarMovieResponses(string locationWatched, int weeklyHoursWatched, string genrePreference)
+    {
+        // Use the provided responses or perform additional processing
+        SetLocationWatched(locationWatched);
+        SetWeeklyHoursWatched(weeklyHoursWatched);
+        SetGenrePreference(genrePreference);
+        Console.WriteLine($"{locationWatched}{weeklyHoursWatched}{genrePreference}");
+
+        // Add Pixar-specific responses or perform additional processing
+    }
 }
