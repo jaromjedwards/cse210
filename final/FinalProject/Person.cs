@@ -4,7 +4,9 @@ public class Person{
 
     private string firstName;
     private string lastName;
-    private char gender;
+    private string gender;
+
+    private int age;
 
     public string getFirstName(){
         return firstName;
@@ -22,12 +24,20 @@ public class Person{
         this.lastName = lastName;
     }
 
-    public char getGender(){
+    public string getGender(){
         return gender;
     }
 
-    public void setGender(char gender){
+    public void setGender(string gender){
         this.gender = gender;
+    }
+
+    public int getAge(){
+        return age;
+    }
+
+    public void setAge(int age){
+        this.age = age;
     }
 
 }
