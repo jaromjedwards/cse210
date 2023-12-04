@@ -10,7 +10,6 @@ class Program
 {
     static void Main(string[] args)
     {
-
         // Get Person Information
         Person person = new Person();
         Console.WriteLine("What is your first name?");
