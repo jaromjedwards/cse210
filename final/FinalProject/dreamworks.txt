@@ -1,1 +1,3 @@
-d,d,d,0:d,d,0:f,f
+firstName,lastName,gender,age,locationWatched,preferredGenre,weeklyHoursWatched,favorite,leastFavorite
+Jarom,Edwards,M,24,h,d,3,f,f
+J,E,H,2,3,3,3,3,3

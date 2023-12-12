@@ -2,21 +2,24 @@ using System;
 using System.IO;
 using System.Collections.Generic;
 
-
 // Abstraction: Abstract classes such as Person and MovieSurveys.
 // Encaptulation: Person encaptulates firstName, lastName, gender and age. 
 // Inheritance: PixarMovieSurvey, DisneyMovieSurvey, and DreamworksMovieSurvey inherit functionality/properties from MovieSurvey.
 // Polymorphism: MovieSurvey holds favorite and least favorite, Pixar/Disney/DreamworksSurvey override
 
-
 class Program
 {
     static void Main(string[] args)
     {
-        // declare txt files
+        // Declare
         string pixarFile = "pixar.txt";
         string disneyFile = "disney.txt";
         string dreamworksFile = "dreamworks.txt";
+        string personFile = "person.txt";
+        string userChoice = "";
+        string locationWatched = "";
+        string genrePreference = "";
+        string hInput = "";
 
         // Get Person Information
         Person person = new Person();
@@ -44,20 +47,13 @@ class Program
         }
 
         // Ask what Survey they are taking
-
-        Console.WriteLine($"Welcome {firstName}! Which survey would you like to take?\n1. Pixar Movies \n2. Disney Princess Movies \n3. DreamWorks Movies");
-        string userChoice = Console.ReadLine();
-
-        // declare
-        string locationWatched = "";
-        string genrePreference = "";
-        string hInput = "";
+        AskWhatSurvey(firstName, ref userChoice);
 
         // PIXAR
         if (userChoice == "1"){
 
-            ProcessFile(pixarFile, firstName, lastName, gender, age);
-            askGeneralQuestions(ref locationWatched, ref genrePreference, ref hInput);
+            CheckHasTakenChildSurvey(pixarFile, firstName, lastName, gender, age, ref userChoice);
+            AskGeneralQuestions(ref locationWatched, ref genrePreference, ref hInput);
 
             Console.WriteLine($"Great! Now onto the Pixar Movie Specific questions");
 
@@ -90,14 +86,14 @@ class Program
             {
                 writer.WriteLine($"{firstName},{lastName},{gender},{age},{locationWatched},{genrePreference},{weeklyHoursWatched},{favorite},{leastFavorite}");
             }
+            PrintPersonInformation(personFile, firstName, lastName, gender, age);
             Console.WriteLine("Text has been written to the file: " + pixarFile);
-
         }
         //DISNEY
         if (userChoice == "2"){
 
-            ProcessFile(disneyFile, firstName, lastName, gender, age);
-            askGeneralQuestions(ref locationWatched, ref genrePreference, ref hInput);
+            CheckHasTakenChildSurvey(disneyFile, firstName, lastName, gender, age, ref userChoice);
+            AskGeneralQuestions(ref locationWatched, ref genrePreference, ref hInput);
 
             Console.WriteLine($"Great! Now onto the Disney Movie Specific questions");
 
@@ -130,14 +126,16 @@ class Program
             {
                 writer.WriteLine($"{firstName},{lastName},{gender},{age},{locationWatched},{genrePreference},{weeklyHoursWatched},{favorite},{leastFavorite}");
             }
+            
+            PrintPersonInformation(personFile, firstName, lastName, gender, age);
             Console.WriteLine("Text has been written to the file: " + disneyFile);
 
         }
         // DREAMWORKS
         if (userChoice == "3"){
 
-            ProcessFile(dreamworksFile, firstName, lastName, gender, age);
-            askGeneralQuestions(ref locationWatched, ref genrePreference, ref hInput);
+            CheckHasTakenChildSurvey(dreamworksFile, firstName, lastName, gender, age, ref userChoice);
+            AskGeneralQuestions(ref locationWatched, ref genrePreference, ref hInput);
 
             Console.WriteLine($"Great! Now onto the Dreamworks Movie Specific questions");
 
@@ -174,7 +172,9 @@ class Program
 
         }
 
-        static void askGeneralQuestions(ref string locationWatched, ref string genrePreference, ref string hInput){
+        PrintPersonInformation(personFile, firstName, lastName, gender, age);
+
+        static void AskGeneralQuestions(ref string locationWatched, ref string genrePreference, ref string hInput){
             Console.WriteLine($"Survey has started. First, let's start with some general questions:");
             // Get general Movie Survey questions
             Console.WriteLine("Where do you mainly watch movies?");
@@ -186,21 +186,60 @@ class Program
             Console.WriteLine("How many hours a week do you watch movies? (Do not include hours watched TV shows, YouTube, Media content etc");
             hInput = Console.ReadLine();
         }
-static bool ProcessFile(string filePath, string firstName, string lastName, string gender, int age)
-{
-    // Check if the file exists
-    if (File.Exists(filePath)){
-        // Read all lines from the file
-        string[] lines = File.ReadAllLines(filePath);
 
-        // Process each line
-        foreach (string line in lines)
+        static bool CheckHasTakenChildSurvey(string filePath, string firstName, string lastName, string gender, int age, ref string userChoice)
         {
-            // Split the line using commas as separators
-            string[] items = line.Split(',');
+        // Check if the file exists
+        if (File.Exists(filePath)){
+            // Read all lines from the file
+            string[] lines = File.ReadAllLines(filePath);
 
-            if (items.Length >= 4)
+            // Process each line
+            foreach (string line in lines)
             {
+                // Split the line using commas as separators
+                string[] items = line.Split(',');
+
+                if (items.Length >= 4)
+                {
+                    string item1 = items[0];
+                    string item2 = items[1];
+                    string item3 = items[2];
+
+                    if (int.TryParse(items[3], out int item4))
+                    {
+                        // Check for a match after parsing item4
+                        if (item1 == firstName && item2 == lastName && item3 == gender && item4 == age)
+                        {
+                            Console.WriteLine("You have already taken this survey! Please choose a different survey to take");
+                            AskWhatSurvey(firstName, ref userChoice);
+                            return true;
+                        }
+                    }
+            }
+                }
+                // If the loop completes without finding a match, the survey hasn't been taken
+                return false;
+                }
+                // If the file doesn't exist, the survey hasn't been taken
+                return false;
+        }
+
+        static string AskWhatSurvey(string firstName, ref string userChoice){
+            Console.WriteLine($"Welcome {firstName}! Which survey would you like to take?\n1. Pixar Movies \n2. Disney Princess Movies \n3. DreamWorks Movies");
+            userChoice = Console.ReadLine();
+            return userChoice;
+        }
+
+        static void PrintPersonInformation(string personFile, string firstName, string lastName, string gender, int age)
+        {
+            bool found = false;
+
+            // Check if the entry already exists in the file
+            foreach (string line in File.ReadAllLines(personFile))
+            {
+                string[] items = line.Split(',');
+
                 string item1 = items[0];
                 string item2 = items[1];
                 string item3 = items[2];
@@ -210,19 +249,22 @@ static bool ProcessFile(string filePath, string firstName, string lastName, stri
                     // Check for a match after parsing item4
                     if (item1 == firstName && item2 == lastName && item3 == gender && item4 == age)
                     {
-                        Console.WriteLine("You have already taken this survey! Please choose a different survey to take");
-                        return true;
+                        found = true;
+                        break; // No need to continue checking if a match is found
                     }
                 }
             }
+
+            // If the entry is not found, append it to the file
+            if (!found)
+            {
+                using (StreamWriter writer = new StreamWriter(personFile, true))
+                {
+                    writer.WriteLine($"{firstName},{lastName},{gender},{age}");
+                }
             }
-            // If the loop completes without finding a match, the survey hasn't been taken
-            return false;
-            }
-            // If the file doesn't exist, the survey hasn't been taken
-            return false;
         }
 
     }
-}
 
+}

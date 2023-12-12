@@ -42,7 +42,7 @@ public class DreamworksMovieSurvey : MovieSurvey{
     dreamworksMovies.Add("The Boss Baby: Family Business");
     dreamworksMovies.Add("The Bad Guys");
     dreamworksMovies.Add("Puss in Boots: The Last Wish");
-    dreamworksMovies.Add("Ruby Gillman, Teenage Kraken");
+    dreamworksMovies.Add("Ruby Gillman: Teenage Kraken");
     dreamworksMovies.Add("Trolls Band Together");
     
         return new List<String>(dreamworksMovies);

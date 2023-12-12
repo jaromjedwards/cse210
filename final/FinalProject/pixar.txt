@@ -1,5 +1,8 @@
-Jarom,Edwards,M,3,f,f0
-Jarom,Edwards,M,24:Home,action,34:Inside Out,Brave
-Jarom,edwards,m,2:3,3,3:r,r
-Jarom,Edwards,M,24
-Jarom,Edward,2,1,1,1,1,1,1
+firstName,lastName,gender,age,locationWatched,preferredGenre,weeklyHoursWatched,favorite,leastFavorite
+Jarom,Edwards,M,24,Home,Action,6,The Good Dinosaur,Brave
+Jarom,Edwards,24,3,s,s,0,s,s
+J,E,M,2,d,d,0,d,d
+J,E,M,32,f,f,0,f,f
+1,1,1,1,1,1,1,1,1
+J,E,H,2,d,d,3,d,d
+Jarom,Edwards,M,34,f,f,0,f,f
