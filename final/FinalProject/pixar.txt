@@ -6,3 +6,5 @@ J,E,M,32,f,f,0,f,f
 1,1,1,1,1,1,1,1,1
 J,E,H,2,d,d,3,d,d
 Jarom,Edwards,M,34,f,f,0,f,f
+Kayla,Edwards,F,28,Living Room,Family,0,Coco,Cars 3
+Jarom,Edwards,M,24,Home,Action,3,Inside Out,Brave

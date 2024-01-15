@@ -1,3 +1,5 @@
 firstName,lastName,gender,age
 J,E,H,2
 Jarom,Edwards,M,34
+Kayla,Edwards,F,28
+Jarom,Edwards,M,24

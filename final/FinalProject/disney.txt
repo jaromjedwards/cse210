@@ -1,1 +1,2 @@
 firstName,lastName,gender,age,locationWatched,preferredGenre,weeklyHoursWatched,favorite,leastFavorite
+Jarom,Edwards,M,24,Home,Action,3,Mulan,The Little Mermaid
